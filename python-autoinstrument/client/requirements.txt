@@ -1,0 +1,7 @@
+Flask==3.0.3
+Click==8.1.7
+Werkzeug==3.0.3
+Jinja2==3.1.4
+requests==2.32.3
+opentelemetry-distro==0.46b0
+opentelemetry-exporter-otlp==1.25.0
