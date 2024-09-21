@@ -1,5 +1,3 @@
-# Deploy Python App using ECS Fargate
-
 ## Use Docker to Deploy Flask App
 
 ```
