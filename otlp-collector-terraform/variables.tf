@@ -1,7 +1,7 @@
 variable "env" {
   description = "Project environment"
   type        = string
-  default     = "rnd"
+  default     = null
 }
 
 variable "project" {
@@ -14,7 +14,7 @@ variable "tags" {
   description = "Tagging values"
   type        = map(string)
   default = {
-    "owner" = "trungtin"
+    "Owner" = "trungtin"
     "iac"   = "terraform"
   }
 }

@@ -5,9 +5,7 @@ module "ecs" {
   create                                 = true
   cluster_name                           = "example-ecs-cluster-001"
   create_cloudwatch_log_group            = true
-  cloudwatch_log_group_retention_in_days = 1
-
-  cluster_settings = { "name" : "containerInsights", "value" : "disabled" }
+  cloudwatch_log_group_retention_in_days = 7
 
   ### Fargate capacity provider definitions
   fargate_capacity_providers = {
@@ -70,8 +68,8 @@ module "ecs" {
           essential                = true
           image                    = "otel/opentelemetry-collector-contrib:0.103.0"
           cpu                      = 256
-          memory_reservation       = 100 # Soft limit
-          memory                   = 256 # Hard limit
+          memory_reservation       = 512 # Soft limit
+          memory                   = 768 # Hard limit
           readonly_root_filesystem = false
           port_mappings = [
             {
@@ -92,7 +90,7 @@ module "ecs" {
           # Container logging
           enable_cloudwatch_logging              = true
           create_cloudwatch_log_group            = true
-          cloudwatch_log_group_retention_in_days = 1 # TBD
+          cloudwatch_log_group_retention_in_days = 7
           log_configuration = {
             log_driver = "awslogs"
             options = {

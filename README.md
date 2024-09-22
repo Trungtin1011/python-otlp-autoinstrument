@@ -1,22 +1,26 @@
-# amazon-ecs-otlp
+# otlp-autoinstrument-images
 
-**Repo Owner**: trungtin
+**Repo Owner**: Tin Trung Ngo
 
-Build and Deploy applications on Amazon ECS with OpenTelemetry Auto-Instrumentation.
 
-Normally, AWS recommends user to use AWS Distro for OpenTelemetry (ADOT) collector for tracing.
+## Before you begin
 
-This repository aims to use the original open-source OpenTelemetry Collector instead of ADOT collector.
+This repository contains demo images for OpenTelemetry Auto-Instrumentation (currently **Python** and **.NET**)
 
-### Repository structure
+Those images are used for demonstrating how to implement auto-instrumentation in a non-Kubernetes environment. For Kubernetes, use [OpenTelemetry Operator](https://github.com/open-telemetry/opentelemetry-operator) instead.
+
+For Amazon ECS, Normally it is recommended to use AWS Distro for OpenTelemetry (ADOT) collector for container instrumentation. The images in this repository use the original open-source OpenTelemetry Collector instead of ADOT collector.
+
+
+## Repository structure
 1. Folder [dotnet-autoinstrument](./dotnet-autoinstrument) contains source code to build required images for .NET autoinstrumentation application.
-2. Folder [python-autoinstrument](./python-autoinstrument) contains source code to build required images for Python autoinstrumentation application.
+2. Folder [python-flask-autoinstrument](./python-flask-autoinstrument) contains source code to build required images for Python autoinstrumentation application.
 3. Folder [normal-python-flask](./normal-python-flask) contains source code to build a sample Python Flask application on Amazon ECS.
-4. Folder [terraform-example](./terraform-example) demostrate how to create and configure an OpenTelemetry Collector on Amazon ECS using Terraform.
+4. Folder [otlp-collector-terraform](./otlp-collector-terraformxample) demostrate how to create and configure an OpenTelemetry Collector on Amazon ECS using Terraform.
 
 <br>
 
-### Deploy Python auto-instrumentation application on ECS
+## Deploy Python auto-instrumentation application on ECS
 
 The concept for deploying the sample Python application with auto-instrumentation is the same as the OpenTelemetry Collector in [terraform-example](./terraform-example) folder.
 
@@ -37,14 +41,14 @@ The procedures may be:
 
 The `Python Client` container need 1 more environment variable, which is the `Python server` endpoint. It has the form of: `SERVER_ENDPOINT='http://ip_address:5000/server_request'`.
 
-For detailed example of environment variables, go through the [README](./python-autoinstrument/README.md) file to understand more.
+For detailed example of environment variables, go through the [README](./python-flask-autoinstrument/README.md) file to understand more.
 
 There are many other environment variables in the concept of OpenTelemetry, which can be found at [Python Zero-code Instrumentation](https://opentelemetry.io/docs/zero-code/python/configuration/#environment-variables).
 
 
 <br>
 
-### Deploy .NET auto-instrumentation application on ECS
+## Deploy .NET auto-instrumentation application on ECS
 
 The procedures of deploying sample .NET application with auto-instrumentation is mostly identical with that of Python:
 1. Build the images `service`, `mssql`, and `client` located in [dotnet-autoinstrument](./dotnet-autoinstrument) folder.
