@@ -1,4 +1,4 @@
-# otlp-autoinstrument-images
+# python-otlp-autoinstrument
 
 **Repo Owner**: Tin Trung Ngo
 
